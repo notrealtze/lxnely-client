@@ -19,9 +19,10 @@ public class GuiToggle {
 
     public void draw(int mouseX, int mouseY) {
         boolean active = getter.get();
-        int bgColor = active ? 0xFF2ECC71 : 0xFFE74C3C;
-        Gui.drawRect(x, y, x + width, y + height, bgColor);
-        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(label, x + 4, y + (height - 8) / 2, 0xFFFFFF);
+        Gui.drawRect(x, y, x + width, y + height, 0x99000000);
+        int color = active ? 0xFF2ECC71 : 0xFFE74C3C;
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(label, x + 5, y + (height/2) - 4, 0xFFFFFFFF);
+        Gui.drawRect(x + width - 15, y + 4, x + width - 5, y + height - 4, color);
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {

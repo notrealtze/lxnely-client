@@ -1,38 +1,42 @@
 package com.lxnely.client.gui;
 
-import com.lxnely.client.gui.components.GuiPanel;
+import com.lxnely.client.config.ClientConfig;
+import com.lxnely.client.gui.components.CategoryPanel;
+import com.lxnely.client.gui.components.GuiToggle;
 import net.minecraft.client.gui.GuiScreen;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClickGuiScreen extends GuiScreen {
-    private GuiPanel mainPanel;
+    private List<CategoryPanel> panels = new ArrayList<>();
 
     @Override
     public void initGui() {
-        mainPanel = new GuiPanel("Lxnely Client Settings", this.width / 2 - 100, this.height / 2 - 50, 200);
+        panels.clear();
+        CategoryPanel movement = new CategoryPanel("Movement", 20, 20, 100);
+        movement.toggles.add(new GuiToggle("ToggleSprint", () -> ClientConfig.toggleSprint, v -> ClientConfig.toggleSprint = v));
+        
+        CategoryPanel visuals = new CategoryPanel("Visuals", 130, 20, 100);
+        visuals.toggles.add(new GuiToggle("Keystrokes", () -> ClientConfig.showKeystrokes, v -> ClientConfig.showKeystrokes = v));
+        visuals.toggles.add(new GuiToggle("FPS Display", () -> ClientConfig.showFPS, v -> ClientConfig.showFPS = v));
+        
+        panels.add(movement);
+        panels.add(visuals);
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        this.drawDefaultBackground();
-        mainPanel.draw(mouseX, mouseY);
+        for (CategoryPanel p : panels) p.draw(mouseX, mouseY);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        mainPanel.mouseClicked(mouseX, mouseY, mouseButton);
+        for (CategoryPanel p : panels) p.mouseClicked(mouseX, mouseY, mouseButton);
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     @Override
-    protected void mouseReleased(int mouseX, int mouseY, int state) {
-        mainPanel.mouseReleased(mouseX, mouseY, state);
-        super.mouseReleased(mouseX, mouseY, state);
-    }
-
-    @Override
-    public boolean doesGuiPauseGame() {
-        return false;
-    }
+    public boolean doesGuiPauseGame() { return false; }
 }
