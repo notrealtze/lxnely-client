@@ -14,10 +14,10 @@ public class ClickGuiScreen extends GuiScreen {
     @Override
     public void initGui() {
         panels.clear();
-        CategoryPanel movement = new CategoryPanel("Movement", 20, 20, 100);
+        CategoryPanel movement = new CategoryPanel("Movement", 40, 40, 90);
         movement.toggles.add(new GuiToggle("ToggleSprint", () -> ClientConfig.toggleSprint, v -> ClientConfig.toggleSprint = v));
         
-        CategoryPanel visuals = new CategoryPanel("Visuals", 130, 20, 100);
+        CategoryPanel visuals = new CategoryPanel("Visuals", 140, 40, 90);
         visuals.toggles.add(new GuiToggle("Keystrokes", () -> ClientConfig.showKeystrokes, v -> ClientConfig.showKeystrokes = v));
         visuals.toggles.add(new GuiToggle("FPS Display", () -> ClientConfig.showFPS, v -> ClientConfig.showFPS = v));
         

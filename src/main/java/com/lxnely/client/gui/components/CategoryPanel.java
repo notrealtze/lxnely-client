@@ -18,16 +18,14 @@ public class CategoryPanel {
     }
 
     public void draw(int mouseX, int mouseY) {
-        Gui.drawRect(x, y, x + width, y + 15, 0xFF2980B9);
-        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(name, x + 5, y + 4, 0xFFFFFFFF);
-        int offset = 15;
+        Gui.drawRect(x, y, x + width, y + 14, 0xFF2980B9);
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(name, x + 4, y + 3, 0xFFFFFFFF);
+        int offset = 14;
         for (GuiToggle t : toggles) {
-            t.x = x;
-            t.y = y + offset;
-            t.width = width;
-            t.height = 15;
+            t.x = x; t.y = y + offset;
+            t.width = width; t.height = 14;
             t.draw(mouseX, mouseY);
-            offset += 15;
+            offset += 14;
         }
     }
 

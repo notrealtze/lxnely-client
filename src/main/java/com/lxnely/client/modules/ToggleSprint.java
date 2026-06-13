@@ -10,8 +10,8 @@ public class ToggleSprint {
 
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent event) {
-        if (ClientConfig.toggleSprint && mc.thePlayer != null) {
-            if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally) {
+        if (ClientConfig.toggleSprint && mc.thePlayer != null && event.phase == TickEvent.Phase.START) {
+            if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally && (mc.thePlayer.getFoodStats().getFoodLevel() > 6 || mc.thePlayer.capabilities.isFlying)) {
                 mc.thePlayer.setSprinting(true);
             }
         }
