@@ -1,18 +1,9 @@
-[
-  {
-    "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
-    "updateUrl": "",
-    "authorList": [
-      "You"
-    ],
-    "credits": "",
-    "logoFile": "",
-    "screenshots": [],
-    "dependencies": []
-  }
-]
+[{
+  "modid": "lxnelyclient",
+  "name": "Lxnely Client",
+  "description": "WTF improvements for Minecraft 1.8.9.",
+  "version": "1.0.0",
+  "mcversion": "1.8.9",
+  "authorList": ["lxnely"],
+  "dependencies": []
+}]
